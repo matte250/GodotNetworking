@@ -26,13 +26,14 @@ public partial class CharacterBody2D : Godot.CharacterBody2D
 	{
 		var fDelta = (float)delta;
 		var input = CollectPlayerInput();
+		
+		RecordPhysicsContext(fDelta, input, _prevState);
 		var state = CalculateState(
 			delta: fDelta,
 			input: input,
 			prevState: _prevState
 		);
 
-		RecordPhysicsContext(fDelta, input, _prevState);
 
 		_prevState = state;
 
